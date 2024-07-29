@@ -1,5 +1,8 @@
 import express from 'express';
+import helmet from 'helmet';
 import cors from 'cors';
+import morgan from 'morgan';
+import { Request, Response } from 'express';
 
 import userRouter from './routers/users';
 import orderRouter from './routers/orders';
@@ -9,12 +12,14 @@ import categoryRouter from './routers/categories';
 const app = express();
 app.use(cors({ origin: process.env.CLIENT_URL }));
 app.use(express.json());
+app.use(helmet());
+app.use(morgan('dev'));
 
-app.get('/', (req, res) => res.send('Hello World!'));
+app.get('/', (req: Request, res: Response) => res.send('Hello World!'));
 
-app.use('/users', userRouter);
-app.use('/orders', orderRouter);
-app.use('/products', productRouter);
-app.use('/categories', categoryRouter);
+// app.use('/api/users', userRouter);
+// app.use('/api/orders', orderRouter);
+// app.use('/api/products', productRouter);
+// app.use('/api/categories', categoryRouter);
 
 export default app;
