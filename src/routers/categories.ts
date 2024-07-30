@@ -8,6 +8,7 @@ import {
     getCategoryById,
     updateCategoryById,
 } from '../controllers/category';
+import { checkIfCategoryExists } from '../middlewares/checkCategory';
 
 const categoryRouter = Router();
 
@@ -18,8 +19,8 @@ categoryRouter
 
 categoryRouter
     .route('/:id')
-    .get(getCategoryById)
-    .put(validate(categorySchema), updateCategoryById)
-    .delete(deleteCategoryById);
+    .get(checkIfCategoryExists, getCategoryById)
+    .put(checkIfCategoryExists, validate(categorySchema), updateCategoryById)
+    .delete(checkIfCategoryExists, deleteCategoryById);
 
 export default categoryRouter;
