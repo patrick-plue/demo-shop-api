@@ -10,9 +10,9 @@ import {
 
 export const product = pgTable('products', {
     id: serial('id').primaryKey(),
-    name: varchar('name', { length: 256 }),
-    description: text('description'),
-    price: real('price'),
+    name: varchar('name', { length: 256 }).notNull(),
+    description: text('description').notNull(),
+    price: real('price').notNull(),
     categoryId: integer('categoryId').references(() => category.id),
 });
 
@@ -25,7 +25,7 @@ export const user = pgTable('users', {
 
 export const category = pgTable('categories', {
     id: serial('id').primaryKey(),
-    name: varchar('name', { length: 256 }),
+    name: varchar('name', { length: 256 }).notNull().unique(),
 });
 
 export const order = pgTable('orders', {

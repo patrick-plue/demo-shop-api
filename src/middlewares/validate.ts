@@ -12,6 +12,7 @@ export function validate(schema: ZodSchema) {
             next();
         } catch (error) {
             console.log(error);
+            res.json({ error });
         }
     };
 }
