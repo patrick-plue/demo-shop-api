@@ -11,8 +11,7 @@ export function validate(schema: ZodSchema) {
             schema.parse(req.body);
             next();
         } catch (error) {
-            console.log(error);
-            res.json({ error });
+            next(error);
         }
     };
 }
