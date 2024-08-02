@@ -5,3 +5,13 @@ export interface CategoryRequest extends Request {
         name: string;
     };
 }
+
+export interface ProductRequest extends Request {
+    product?: {
+        id: number;
+        name: string;
+        description: string;
+        price: number;
+        categoryId: number | null;
+    };
+}

@@ -1,6 +1,14 @@
 import { Router } from 'express';
 import { validate } from '../middlewares/validate';
 import { productSchema } from '../zod/schemas';
+import {
+    getProducts,
+    getProductById,
+    createProduct,
+    updateProductById,
+    deleteProductById,
+} from '../controllers/product';
+import { checkIfProductExists } from '../middlewares/checkIfExits';
 
 const productRouter = Router();
 
@@ -11,8 +19,8 @@ productRouter
 
 productRouter
     .route('/:id')
-    .get(getProduct)
-    .put(validate(productSchema), updateProduct)
-    .delete(deleteProduct);
+    .get(checkIfProductExists, getProductById)
+    .put(checkIfProductExists, validate(productSchema), updateProductById)
+    .delete(checkIfProductExists, deleteProductById);
 
 export default productRouter;

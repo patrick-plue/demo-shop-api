@@ -8,7 +8,7 @@ import {
     getCategoryById,
     updateCategoryById,
 } from '../controllers/category';
-import { checkIfCategoryExists } from '../middlewares/checkCategory';
+import { checkIfCategoryExists } from '../middlewares/checkIfExits';
 
 const categoryRouter = Router();
 
