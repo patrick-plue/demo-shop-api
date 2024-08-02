@@ -23,3 +23,12 @@ export interface OrderRequest extends Request {
         total: number;
     };
 }
+
+export interface UserRequest extends Request {
+    user?: {
+        id: number;
+        name: string;
+        email: string;
+        password: string;
+    };
+}
