@@ -15,3 +15,11 @@ export interface ProductRequest extends Request {
         categoryId: number | null;
     };
 }
+
+export interface OrderRequest extends Request {
+    order?: {
+        id: number;
+        userId: number;
+        total: number;
+    };
+}

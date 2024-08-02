@@ -19,7 +19,7 @@ app.use(morgan('dev'));
 app.get('/', (req: Request, res: Response) => res.send('Hello World!'));
 
 // app.use('/api/users', userRouter);
-// app.use('/api/orders', orderRouter);
+app.use('/api/orders', orderRouter);
 app.use('/api/products', productRouter);
 app.use('/api/categories', categoryRouter);
 app.use('*', (req, res) => res.sendStatus(404));
