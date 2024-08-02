@@ -8,6 +8,7 @@ import {
     updateOrderById,
     deleteOrderById,
 } from '../controllers/order';
+import { checkIfOrderExists } from '../middlewares/checkIfExits';
 
 const orderRouter = Router();
 
@@ -15,8 +16,8 @@ orderRouter.route('/').get(getOrders).post(validate(orderSchema), createOrder);
 
 orderRouter
     .route('/:id')
-    .get(getOrderById)
-    .put(validate(orderSchema), updateOrderById)
-    .delete(deleteOrderById);
+    .get(checkIfOrderExists, getOrderById)
+    .put(checkIfOrderExists, validate(orderSchema), updateOrderById)
+    .delete(checkIfOrderExists, deleteOrderById);
 
 export default orderRouter;
