@@ -8,14 +8,15 @@ import {
     updateUserById,
     deleteUserById,
 } from '../controllers/user';
+import { checkIfUserExists } from '../middlewares/checkIfExits';
 const userRouter = Router();
 
 userRouter.route('/').get(getUsers).post(validate(userSchema), createUser);
 
 userRouter
     .route('/:id')
-    .get(getUserById)
-    .put(validate(userSchema), updateUserById)
-    .delete(deleteUserById);
+    .get(checkIfUserExists, getUserById)
+    .put(checkIfUserExists, validate(userSchema), updateUserById)
+    .delete(checkIfUserExists, deleteUserById);
 
 export default userRouter;

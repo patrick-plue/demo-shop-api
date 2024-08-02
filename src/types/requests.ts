@@ -19,7 +19,7 @@ export interface ProductRequest extends Request {
 export interface OrderRequest extends Request {
     order?: {
         id: number;
-        userId: number;
+        userId: number | null;
         total: number;
     };
 }
