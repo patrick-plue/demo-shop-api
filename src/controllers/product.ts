@@ -3,7 +3,6 @@ import db from '../db';
 import { product } from '../db/schema';
 import { eq } from 'drizzle-orm';
 import { ProductRequest } from '../types/requests';
-import { emitWarning } from 'process';
 
 export async function createProduct(
     req: Request,

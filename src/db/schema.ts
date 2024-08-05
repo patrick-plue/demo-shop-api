@@ -13,6 +13,7 @@ export const product = pgTable('products', {
     name: varchar('name', { length: 256 }).notNull(),
     description: text('description').notNull(),
     price: real('price').notNull(),
+    image: varchar('image', { length: 256 }),
     categoryId: integer('categoryId').references(() => category.id),
 });
 
